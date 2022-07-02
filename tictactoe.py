@@ -9,20 +9,20 @@ def tic_tac_toe_field(field):
 def take_input(player_token):
    valid = False
    while not valid:
-      player_answer = input("Куда поставим " + player_token+"? ")
+      player_answer = input("Where do we put the " + player_token+"? ")
       try:
          player_answer = int(player_answer)
       except:
-         print("Некорректный ввод. Вы уверены, что ввели число?")
+         print("Invalid input. Are you sure you entered a number?")
          continue
       if player_answer >= 1 and player_answer <= 9:
          if(str(field[player_answer-1]) not in "X0"):
             field[player_answer-1] = player_token
             valid = True
          else:
-            print("Эта клетка уже занята!")
+            print("This cell is already taken!")
       else:
-        print("Некорректный ввод. Введите число от 1 до 9.")
+        print("Invalid input. Enter a number from 1 to 9.")
 
 def check_win(board):
    win_coord = ((0,1,2), (3,4,5), (6,7,8), (0,3,6), (1,4,7), (2,5,8), (0,4,8), (2,4,6))
@@ -44,14 +44,14 @@ def main(field):
         if counter > 4:
            tmp = check_win(field)
            if tmp:
-              print(tmp, "выиграл!")
+              print(tmp, "won!")
               win = True
               break
         if counter == 9:
-            print("Ничья!")
+            print("The game ended in a draw!")
             break
     tic_tac_toe_field(field)
 main(field)
 
-input("Нажмите Enter для выхода!")
+input("Press Enter to exit!")
 
